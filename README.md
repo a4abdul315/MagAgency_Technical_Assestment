@@ -187,4 +187,7 @@ not eyeballed from static mockups. A few things worth knowing:
 - ✅ Task 2 — DynamoDB schema, GET/POST `/api/bookings`, POST `/api/leads`,
   validation + error handling on both endpoints
 - ✅ Task 3a — light/dark/system theme toggle
-- ✅ Task 3b — responsive layout (mobile/tablet/desktop breakpoints)
+- ✅ Task 3b — responsive layout (mobile/tablet/desktop breakpoints). The Figma
+  only provides a desktop design, so behaviour below the desktop breakpoint
+  (stacked sections, full-width forms, simplified nav) follows standard
+  responsive best practices per the brief's "based on best practice" wording.
