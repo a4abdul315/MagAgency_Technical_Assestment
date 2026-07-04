@@ -46,7 +46,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${quicksand.variable} ${openSans.variable} ${plusJakarta.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-neutral-300 font-sans">
+      <body className="min-h-full flex flex-col bg-white font-sans dark:bg-neutral-800">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
