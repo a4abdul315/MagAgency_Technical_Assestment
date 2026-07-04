@@ -155,15 +155,14 @@ colors, type scale, spacing, and 20 exported icon/logo/illustration assets),
 not eyeballed from static mockups. A few things worth knowing:
 
 - **H1 font substitution:** the Figma file uses **Isidora Sans Alt** for the
-  hero heading, which is a paid font. I substituted **Plus Jakarta Sans**
-  (free, similar geometric weight) rather than bundle a font without a clear
-  license. Every other typeface (Quicksand, Open Sans, Inter for the
-  modal's date/time picker) is used as-specified via `next/font/google`.
-- **Dark-mode input borders:** in the Figma source, the modal's text inputs
-  use the same `neutral-600` value for both fill and border in dark mode,
-  making the border invisible. I implemented this literally rather than
-  silently "fixing" the source design — flagging it here in case you'd
-  rather I lighten the border for usability.
+  hero heading, which is a paid font. I substituted **Quicksand 700**, chosen
+  by measuring every candidate's rendered width for "FlowSpark" at 48px
+  against the 244px reported by Figma's inspect panel (Quicksand 700 lands at
+  243.4px, with matching rounded terminals and single-story 'a'). Every other
+  typeface (Quicksand for headings, Open Sans for body, Inter for the modal's
+  date/time picker) is used as-specified via `next/font/google`.
+- **Dark-mode inputs:** form fields keep a light fill in dark mode (matching
+  the modal reference design) so text and borders stay legible.
 - **Carousel progress indicator:** the brief says the indicator "should fill
   over 3 seconds" — I implemented it as a single bar that fills 0→100% per
   slide (not a 3-segment dashed indicator), which matches the literal wording
