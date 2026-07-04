@@ -33,8 +33,8 @@ function scrollToLeadForm() {
 
 export function SiteHeader() {
   return (
-    <div className="mx-auto flex w-full max-w-[1216px] flex-col gap-4">
-      <div className="flex items-center justify-between">
+    <div className="flex w-full flex-col gap-4">
+      <div className="flex w-full items-center justify-between">
         <div className="hidden items-center gap-[29px] sm:flex">
           <UtilityPill icon={<GlobeIcon className="size-4" />} label="EN" />
           <UtilityPill icon={<ChatIcon className="size-4" />} label="CHAT TO SALES" />
@@ -46,7 +46,7 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <nav className="flex flex-wrap items-center justify-between gap-4 rounded-full bg-primary-100 px-4 py-8 dark:bg-neutral-600">
+      <nav className="mx-auto flex w-full max-w-[1216px] flex-wrap items-center justify-between gap-4 rounded-full bg-primary-100 px-4 py-8 dark:bg-neutral-600">
         <div className="flex items-center gap-4">
           <Logo className="h-[31px] w-auto text-primary-400" />
           <ul className="hidden items-center gap-4 lg:flex">
