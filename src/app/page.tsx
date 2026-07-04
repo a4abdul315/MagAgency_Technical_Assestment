@@ -9,7 +9,7 @@ import { ScheduleModal } from "@/components/schedule/schedule-modal";
 export default function Home() {
   return (
     <ScheduleCallProvider>
-      <main className="flex w-full flex-1 flex-col gap-16 pt-4 pb-16 lg:gap-24 lg:pb-24">
+      <main className="flex w-full flex-1 flex-col gap-16 pt-4 lg:gap-24">
         <div className="px-4 sm:px-6 lg:px-8">
           <SiteHeader />
         </div>

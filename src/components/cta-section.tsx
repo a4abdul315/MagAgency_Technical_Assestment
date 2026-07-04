@@ -10,16 +10,7 @@ function scrollToLeadForm() {
 
 export function CtaSection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-[632px] flex-col items-center gap-8 text-center">
-      <Image
-        src="/assets/deco-squiggle-cta.svg"
-        alt=""
-        width={187}
-        height={68}
-        aria-hidden
-        className="pointer-events-none absolute top-[125px] left-[497px] hidden lg:block"
-      />
-
+    <section className="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 text-center">
       <h2 className="font-heading text-4xl font-semibold text-neutral-800 dark:text-neutral-300">
         Want to see how we can help?
       </h2>
@@ -30,11 +21,19 @@ export function CtaSection() {
       </p>
 
       <div className="flex flex-col items-center gap-4">
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="relative flex flex-wrap justify-center gap-4">
           <ScheduleCallButton variant="primary" />
           <Button type="button" variant="outline" onClick={scrollToLeadForm}>
             Start a free trial
           </Button>
+          <Image
+            src="/assets/deco-squiggle-cta.svg"
+            alt=""
+            width={140}
+            height={51}
+            aria-hidden
+            className="pointer-events-none absolute top-1/2 -right-32 hidden -translate-y-1/2 lg:block"
+          />
         </div>
         <p className="font-sans text-neutral-400">Free 14-day trial. Cancel anytime.</p>
       </div>

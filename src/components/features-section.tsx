@@ -41,7 +41,7 @@ export function FeaturesSection() {
   const [activeSlug, setActiveSlug] = useState(FEATURES[0].slug);
 
   return (
-    <div className="relative mx-auto w-full max-w-[1064px]">
+    <div className="relative w-full">
       <Image
         src="/assets/deco-sparkle-features.svg"
         alt=""
@@ -50,71 +50,73 @@ export function FeaturesSection() {
         aria-hidden
         className="pointer-events-none absolute -top-6 right-24 hidden lg:block"
       />
-      <Image
-        src="/assets/deco-squiggle-features.svg"
-        alt=""
-        width={180}
-        height={77}
-        aria-hidden
-        className="pointer-events-none absolute top-[615px] left-12 hidden lg:block"
-      />
-    <section
-      id="features"
-      className="flex w-full flex-col gap-4 rounded-[20px] bg-primary-100 p-8 lg:flex-row lg:justify-between lg:p-16 dark:bg-neutral-600"
-    >
-      <div className="flex w-full flex-col gap-8 lg:w-[415px]">
-        <h2 className="font-heading text-4xl font-semibold text-neutral-800 dark:text-neutral-300">
-          FlowSpark features
-        </h2>
+      <section
+        id="features"
+        className="flex w-full flex-col gap-4 rounded-[20px] bg-primary-100 p-8 lg:flex-row lg:justify-between lg:p-16 dark:bg-neutral-600"
+      >
+        <div className="flex w-full flex-col gap-8 lg:flex-1">
+          <h2 className="font-heading text-4xl font-semibold text-neutral-800 dark:text-neutral-300">
+            FlowSpark features
+          </h2>
 
-        <ul className="flex flex-col gap-4">
-          {FEATURES.map((feature) => {
-            const isActive = feature.slug === activeSlug;
-            return (
-              <li key={feature.slug}>
-                <button
-                  type="button"
-                  onClick={() => setActiveSlug(feature.slug)}
-                  aria-pressed={isActive}
-                  className="flex w-full items-center gap-4 text-left"
-                >
-                  <span
-                    className={cn(
-                      "h-12 w-1 shrink-0 rounded-full",
-                      isActive ? "bg-primary-400" : "bg-primary-200",
-                    )}
-                  />
-                  <span className="flex flex-col gap-1">
-                    <span className="font-sans font-bold text-neutral-800 dark:text-neutral-200">
-                      {feature.title}
+          <ul className="flex flex-col gap-4">
+            {FEATURES.map((feature) => {
+              const isActive = feature.slug === activeSlug;
+              return (
+                <li key={feature.slug}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveSlug(feature.slug)}
+                    aria-pressed={isActive}
+                    className="flex w-full items-center gap-4 text-left"
+                  >
+                    <span
+                      className={cn(
+                        "h-12 w-1 shrink-0 rounded-full",
+                        isActive ? "bg-primary-400" : "bg-primary-200",
+                      )}
+                    />
+                    <span className="flex flex-col gap-1">
+                      <span className="font-sans font-bold text-neutral-800 dark:text-neutral-200">
+                        {feature.title}
+                      </span>
+                      <span className="font-sans text-neutral-800 dark:text-neutral-300">
+                        {feature.description}
+                      </span>
                     </span>
-                    <span className="font-sans text-neutral-800 dark:text-neutral-300">
-                      {feature.description}
-                    </span>
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
 
-        <p className="font-sans text-neutral-800 dark:text-neutral-300">
-          Experience simplicity with our user-friendly interface, designed for effortless
-          navigation. Transform complex tasks into simple actions, enhancing productivity and
-          strategic focus. Enjoy a seamless experience that drives results and optimizes your
-          marketing efforts efficiently.
-        </p>
+          <p className="font-sans text-neutral-800 dark:text-neutral-300 lg:max-w-2xl">
+            Experience simplicity with our user-friendly interface, designed for effortless
+            navigation. Transform complex tasks into simple actions, enhancing productivity and
+            strategic focus. Enjoy a seamless experience that drives results and optimizes your
+            marketing efforts efficiently.
+          </p>
 
-        <button
-          type="button"
-          className="inline-flex h-12 w-fit items-center justify-center rounded-full border-2 border-primary-400 px-8 font-sans font-bold text-primary-600 hover:bg-primary-200/50 dark:text-neutral-200 dark:hover:bg-neutral-800"
-        >
-          See more features
-        </button>
-      </div>
+          <div className="relative w-fit">
+            <button
+              type="button"
+              className="relative inline-flex h-12 w-fit items-center justify-center rounded-full border-2 border-primary-400 px-8 font-sans font-bold text-primary-600 hover:bg-primary-200/50 dark:text-neutral-200 dark:hover:bg-neutral-800"
+            >
+              See more features
+            </button>
+            <Image
+              src="/assets/deco-squiggle-features.svg"
+              alt=""
+              width={140}
+              height={60}
+              aria-hidden
+              className="pointer-events-none absolute top-full -left-4 hidden lg:block"
+            />
+          </div>
+        </div>
 
-      <Carousel key={activeSlug} images={imagesFor(activeSlug)} />
-    </section>
+        <Carousel key={activeSlug} images={imagesFor(activeSlug)} />
+      </section>
     </div>
   );
 }
