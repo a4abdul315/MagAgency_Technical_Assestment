@@ -10,7 +10,7 @@ function scrollToLeadForm() {
 
 export function CtaSection() {
   return (
-    <section className="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 text-center">
+    <section className="mx-auto flex w-full max-w-[632px] flex-col items-center gap-8 text-center">
       <h2 className="font-heading text-4xl font-semibold text-neutral-800 dark:text-neutral-300">
         Want to see how we can help?
       </h2>

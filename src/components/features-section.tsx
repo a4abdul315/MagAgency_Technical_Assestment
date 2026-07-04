@@ -41,7 +41,7 @@ export function FeaturesSection() {
   const [activeSlug, setActiveSlug] = useState(FEATURES[0].slug);
 
   return (
-    <div className="relative w-full">
+    <div className="relative mx-auto w-full max-w-[1064px]">
       <Image
         src="/assets/deco-sparkle-features.svg"
         alt=""
@@ -54,7 +54,7 @@ export function FeaturesSection() {
         id="features"
         className="flex w-full flex-col gap-4 rounded-[20px] bg-primary-100 p-8 lg:flex-row lg:justify-between lg:p-16 dark:bg-neutral-600"
       >
-        <div className="flex w-full flex-col gap-8 lg:flex-1">
+        <div className="flex w-full flex-col gap-8 lg:w-[415px]">
           <h2 className="font-heading text-4xl font-semibold text-neutral-800 dark:text-neutral-300">
             FlowSpark features
           </h2>
@@ -90,7 +90,7 @@ export function FeaturesSection() {
             })}
           </ul>
 
-          <p className="font-sans text-neutral-800 dark:text-neutral-300 lg:max-w-2xl">
+          <p className="font-sans text-neutral-800 dark:text-neutral-300">
             Experience simplicity with our user-friendly interface, designed for effortless
             navigation. Transform complex tasks into simple actions, enhancing productivity and
             strategic focus. Enjoy a seamless experience that drives results and optimizes your

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Quicksand, Open_Sans, Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Quicksand, Open_Sans, Baloo_2, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -16,11 +16,12 @@ const openSans = Open_Sans({
 });
 
 // Substitute for Isidora Sans Alt (paid font used for the h1 in the Figma
-// source) — closest free, license-clean geometric sans available on Google Fonts.
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+// source) — Baloo 2 is the closest license-clean match to its rounded,
+// chunky geometric letterforms on Google Fonts.
+const baloo = Baloo_2({
+  variable: "--font-baloo",
   subsets: ["latin"],
-  weight: ["600"],
+  weight: ["500", "600"],
 });
 
 const inter = Inter({
@@ -44,7 +45,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${quicksand.variable} ${openSans.variable} ${plusJakarta.variable} ${inter.variable} h-full antialiased`}
+      className={`${quicksand.variable} ${openSans.variable} ${baloo.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white font-sans dark:bg-neutral-800">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
