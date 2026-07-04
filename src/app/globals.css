@@ -28,4 +28,18 @@
   body {
     @apply text-neutral-800;
   }
+
+  /* Browsers paint autofilled fields with their own background (often a
+     translucent dark/yellow tint) that ignores our own bg-white utility.
+     The box-shadow trick is the only reliable cross-browser override. */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-neutral-800);
+    box-shadow: 0 0 0 1000px white inset;
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+    transition: background-color 9999s ease-in-out 0s;
+  }
 }
