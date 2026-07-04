@@ -45,18 +45,30 @@ export function Carousel({ images }: { images: string[] }) {
     return () => clearTimeout(timer);
   }, [index, images.length]);
 
+  // Warm the browser cache for every slide in this set as soon as it mounts,
+  // so arrow clicks and the 3s auto-advance swap instantly instead of showing
+  // a blank square while the next photo downloads.
+  useEffect(() => {
+    for (const src of images) {
+      const img = new window.Image();
+      img.src = src;
+    }
+  }, [images]);
+
   const goPrev = () => setIndex((i) => (i - 1 + images.length) % images.length);
   const goNext = () => setIndex((i) => (i + 1) % images.length);
 
   return (
-    <div className="flex w-full flex-col gap-4 lg:w-115">
+    <div className="flex w-full flex-col gap-4 lg:w-[43%]">
       <div className="relative aspect-square w-full overflow-hidden rounded-[20px]">
         <Image
           key={images[index]}
           src={images[index]}
           alt=""
           fill
-          sizes="460px"
+          priority
+          unoptimized
+          sizes="(min-width: 1024px) 43vw, 100vw"
           className="object-cover"
         />
       </div>

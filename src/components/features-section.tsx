@@ -34,7 +34,8 @@ const FEATURES = [
 ];
 
 function imagesFor(slug: string) {
-  return [1, 2, 3].map((n) => `https://picsum.photos/seed/flowspark-${slug}-${n}/460/460`);
+  // .webp keeps the files ~30% smaller than picsum's default JPEG.
+  return [1, 2, 3].map((n) => `https://picsum.photos/seed/flowspark-${slug}-${n}/640/640.webp`);
 }
 
 export function FeaturesSection() {
@@ -54,7 +55,7 @@ export function FeaturesSection() {
         id="features"
         className="flex w-full flex-col gap-4 rounded-[20px] bg-primary-100 p-8 lg:flex-row lg:justify-between lg:p-16 dark:bg-neutral-600"
       >
-        <div className="flex w-full flex-col gap-8 lg:w-[415px]">
+        <div className="flex w-full flex-col gap-8 lg:w-[39%]">
           <h2 className="font-heading text-4xl font-semibold text-neutral-800 dark:text-neutral-300">
             FlowSpark features
           </h2>

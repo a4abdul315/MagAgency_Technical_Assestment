@@ -3,7 +3,7 @@ import { LeadForm } from "@/components/lead-form";
 
 export function HeroSection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-[848px] flex-col items-center gap-8 lg:flex-row lg:items-center">
+    <section className="relative flex w-full flex-col items-center gap-8 lg:mr-[150px] lg:ml-[164px] lg:w-auto lg:flex-row lg:items-center lg:justify-between">
       <Image
         src="/assets/deco-squiggle-hero.svg"
         alt=""
@@ -21,7 +21,7 @@ export function HeroSection() {
         className="pointer-events-none absolute -top-6 right-8 hidden lg:block"
       />
 
-      <div className="flex w-full flex-col gap-8 lg:w-[408px]">
+      <div className="flex w-full flex-col gap-8 lg:w-[48%]">
         <div className="flex flex-col gap-4">
           <h1 className="font-display text-5xl leading-[1.1] font-bold text-neutral-800 dark:text-neutral-300">
             FlowSpark
@@ -45,7 +45,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="w-full lg:w-[408px]">
+      <div className="w-full lg:w-[48%]">
         <LeadForm />
       </div>
     </section>
