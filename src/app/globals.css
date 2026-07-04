@@ -29,6 +29,31 @@
     @apply text-neutral-800;
   }
 
+  /* Smooth cross-fade when toggling light/dark mode. Scoped to color
+     properties only so layout animations and hover states stay snappy. */
+  body,
+  main,
+  nav,
+  footer,
+  section,
+  div,
+  input,
+  textarea,
+  select,
+  button,
+  a,
+  span,
+  p,
+  h1,
+  h2,
+  h3,
+  li,
+  svg {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+  }
+
   /* Browsers paint autofilled fields with their own background (often a
      translucent dark/yellow tint) that ignores our own bg-white utility.
      The box-shadow trick is the only reliable cross-browser override. */

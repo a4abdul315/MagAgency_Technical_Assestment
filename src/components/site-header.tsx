@@ -46,7 +46,7 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <nav className="mx-auto flex w-full max-w-[1216px] flex-wrap items-center justify-between gap-4 rounded-full bg-primary-100 px-4 py-8 dark:bg-neutral-600">
+      <nav className="flex flex-wrap items-center justify-between gap-4 rounded-full bg-primary-100 px-4 py-8 sm:mx-8 lg:mx-16 dark:bg-neutral-600">
         <div className="flex items-center gap-4">
           <Logo className="h-[31px] w-auto text-primary-400" />
           <ul className="hidden items-center gap-4 lg:flex">
