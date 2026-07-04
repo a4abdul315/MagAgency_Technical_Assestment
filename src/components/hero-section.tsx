@@ -23,7 +23,7 @@ export function HeroSection() {
 
       <div className="flex w-full flex-col gap-8 lg:w-[408px]">
         <div className="flex flex-col gap-4">
-          <h1 className="font-display text-5xl leading-[1.1] font-semibold text-neutral-800 dark:text-neutral-300">
+          <h1 className="font-display text-5xl leading-[1.1] font-bold text-neutral-800 dark:text-neutral-300">
             FlowSpark
           </h1>
           <p className="max-w-[430px] font-sans text-base leading-[1.4] font-bold text-neutral-600 dark:text-neutral-300">

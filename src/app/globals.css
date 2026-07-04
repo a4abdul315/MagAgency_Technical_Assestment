@@ -20,7 +20,7 @@
 
   --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
   --font-picker: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
