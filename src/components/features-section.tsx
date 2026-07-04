@@ -41,7 +41,7 @@ export function FeaturesSection() {
   const [activeSlug, setActiveSlug] = useState(FEATURES[0].slug);
 
   return (
-    <div className="relative mx-auto w-full max-w-[1064px]">
+    <div className="relative sm:mx-8 lg:mx-16">
       <Image
         src="/assets/deco-sparkle-features.svg"
         alt=""
