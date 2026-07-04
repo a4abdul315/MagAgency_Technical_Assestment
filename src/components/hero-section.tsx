@@ -45,8 +45,10 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="w-full lg:w-[48%]">
-        <LeadForm />
+      <div className="flex w-full lg:w-[48%] lg:justify-end">
+        <div className="w-full lg:max-w-md">
+          <LeadForm />
+        </div>
       </div>
     </section>
   );
