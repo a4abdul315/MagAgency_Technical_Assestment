@@ -24,3 +24,12 @@ export const bookingSchema = z.object({
 });
 
 export type BookingInput = z.infer<typeof bookingSchema>;
+
+// The modal manages date/time (calendar + time-slot grid) and phone (custom
+// country-code selector) as local component state rather than registered
+// react-hook-form fields, so the client-side form only validates the rest —
+// everything is merged back together and re-validated server-side via the
+// full `bookingSchema`.
+export const bookingFormSchema = bookingSchema.omit({ date: true, time: true, phone: true });
+
+export type BookingFormInput = z.infer<typeof bookingFormSchema>;

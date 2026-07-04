@@ -33,7 +33,7 @@ export function TimeSlots({
             className={cn(
               "font-sans h-[43px] w-[100px] shrink-0 rounded-full text-base font-bold transition-colors disabled:cursor-not-allowed",
               isBooked && "border-2 border-neutral-400 text-neutral-400 dark:border-neutral-600 dark:text-neutral-600",
-              !isBooked && !isSelected && "border border-primary-400 text-primary-600 hover:bg-primary-100 dark:hover:bg-neutral-800",
+              !isBooked && !isSelected && "border border-primary-400 text-primary-600 hover:bg-primary-100 dark:text-neutral-200 dark:hover:bg-neutral-800",
               !isBooked && isSelected && "border border-primary-400 bg-primary-400 text-white",
             )}
           >

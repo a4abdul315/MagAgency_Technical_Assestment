@@ -8,7 +8,8 @@ import { Calendar, toISODate } from "@/components/schedule/calendar";
 import { TimeSlots } from "@/components/schedule/time-slots";
 import { CalendarIcon, CloseIcon } from "@/components/icons";
 import { Checkbox } from "@/components/ui/checkbox";
-import { bookingSchema, type BookingInput } from "@/lib/validation";
+import { PhoneInput, COUNTRY_CODES } from "@/components/ui/phone-input";
+import { bookingFormSchema, type BookingFormInput } from "@/lib/validation";
 import type { BookingSummary } from "@/types/booking";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -27,16 +28,19 @@ function ScheduleModalDialog() {
   const today = useMemo(() => new Date(), []);
   const [selectedDate, setSelectedDate] = useState(today);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [countryIndex, setCountryIndex] = useState(0);
+  const [phoneDigits, setPhoneDigits] = useState("");
   const [bookings, setBookings] = useState<BookingSummary[]>([]);
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+  const [phoneError, setPhoneError] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<BookingInput>({
-    resolver: zodResolver(bookingSchema),
+  } = useForm<BookingFormInput>({
+    resolver: zodResolver(bookingFormSchema),
     defaultValues: { consent: false as unknown as true },
   });
 
@@ -65,14 +69,13 @@ function ScheduleModalDialog() {
     return new Set(bookings.filter((b) => b.date === iso).map((b) => b.time));
   }, [bookings, selectedDate]);
 
-  const onSubmit = async (data: BookingInput) => {
-    if (!selectedTime) {
-      setServerError("Please select a time slot.");
-      return;
-    }
+  const onSubmit = async (data: BookingFormInput) => {
+    setPhoneError(phoneDigits.trim() ? null : "Phone number is required");
+    setServerError(!selectedTime ? "Please select a time slot." : null);
+
+    if (!selectedTime || !phoneDigits.trim()) return;
 
     setStatus("submitting");
-    setServerError(null);
 
     try {
       const res = await fetch("/api/bookings", {
@@ -80,6 +83,7 @@ function ScheduleModalDialog() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
+          phone: `${COUNTRY_CODES[countryIndex].code} ${phoneDigits.trim()}`,
           date: toISODate(selectedDate),
           time: selectedTime,
         }),
@@ -173,7 +177,7 @@ function ScheduleModalDialog() {
                 <div className="mt-2">
                   <TimeSlots selected={selectedTime} bookedTimes={bookedTimes} onSelect={setSelectedTime} />
                 </div>
-                {!selectedTime && serverError === "Please select a time slot." && (
+                {serverError === "Please select a time slot." && (
                   <p className="mt-2 text-sm text-red-600">{serverError}</p>
                 )}
               </div>
@@ -205,18 +209,13 @@ function ScheduleModalDialog() {
                     placeholder="Company name"
                   />
                 </Field>
-                <Field label="Phone number" error={errors.phone?.message}>
-                  <div className="flex h-12 items-center rounded-md border border-neutral-600 bg-white dark:bg-neutral-600">
-                    <span className="flex h-full items-center gap-1 border-r border-neutral-600 px-2 font-sans text-sm text-neutral-600 dark:text-neutral-200">
-                      🇺🇸 +1
-                    </span>
-                    <input
-                      {...register("phone")}
-                      type="tel"
-                      placeholder="Phone number"
-                      className="h-full w-full rounded-r-md bg-transparent px-3 font-sans text-neutral-800 outline-none dark:text-neutral-200"
-                    />
-                  </div>
+                <Field label="Phone number" error={phoneError ?? undefined}>
+                  <PhoneInput
+                    countryIndex={countryIndex}
+                    onCountryChange={setCountryIndex}
+                    value={phoneDigits}
+                    onChange={setPhoneDigits}
+                  />
                 </Field>
               </div>
 
@@ -226,7 +225,7 @@ function ScheduleModalDialog() {
                     {...register("notes")}
                     rows={6}
                     placeholder="Anything you'd like us to know ahead of the call?"
-                    className="h-[179px] w-full resize-none rounded-md border border-neutral-600 bg-white p-2.5 font-sans text-neutral-800 outline-none dark:bg-neutral-600 dark:text-neutral-200"
+                    className="h-[179px] w-full resize-none rounded-md border border-neutral-600 bg-white p-2.5 font-sans text-neutral-800 outline-none"
                   />
                 </Field>
 
@@ -269,7 +268,7 @@ function ScheduleModalDialog() {
 }
 
 const inputClass =
-  "h-12 w-full rounded-md border border-neutral-600 bg-white p-3 font-sans text-neutral-800 outline-none focus:border-primary-400 dark:bg-neutral-600 dark:text-neutral-200";
+  "h-12 w-full rounded-md border border-neutral-600 bg-white p-3 font-sans text-neutral-800 outline-none focus:border-primary-400";
 
 function Field({
   label,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Carousel } from "@/components/carousel";
 import { cn } from "@/lib/utils";
 
@@ -40,9 +41,26 @@ export function FeaturesSection() {
   const [activeSlug, setActiveSlug] = useState(FEATURES[0].slug);
 
   return (
+    <div className="relative mx-auto w-full max-w-[1064px]">
+      <Image
+        src="/assets/deco-sparkle-features.svg"
+        alt=""
+        width={39}
+        height={39}
+        aria-hidden
+        className="pointer-events-none absolute -top-6 right-24 hidden lg:block"
+      />
+      <Image
+        src="/assets/deco-squiggle-features.svg"
+        alt=""
+        width={180}
+        height={77}
+        aria-hidden
+        className="pointer-events-none absolute top-[615px] left-12 hidden lg:block"
+      />
     <section
       id="features"
-      className="mx-auto flex w-full max-w-[1064px] flex-col gap-4 rounded-[20px] bg-primary-100 p-8 lg:flex-row lg:justify-between lg:p-16 dark:bg-neutral-600"
+      className="flex w-full flex-col gap-4 rounded-[20px] bg-primary-100 p-8 lg:flex-row lg:justify-between lg:p-16 dark:bg-neutral-600"
     >
       <div className="flex w-full flex-col gap-8 lg:w-[415px]">
         <h2 className="font-heading text-4xl font-semibold text-neutral-800 dark:text-neutral-300">
@@ -97,5 +115,6 @@ export function FeaturesSection() {
 
       <Carousel key={activeSlug} images={imagesFor(activeSlug)} />
     </section>
+    </div>
   );
 }
