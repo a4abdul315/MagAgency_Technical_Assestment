@@ -118,11 +118,8 @@ just enough for the frontend to grey out already-booked slots.
 
 ## Deploying to Vercel
 
-1. Push this repo to GitHub (public, per the submission requirements):
-   ```bash
-   gh repo create flowspark-technical-test --public --source=. --remote=origin --push
-   ```
-   (or create the repo on github.com and `git remote add origin <url> && git push -u origin main`)
+1. Push this repo to a public GitHub repository (create one on github.com, then
+   `git remote add origin <url> && git push -u origin main`).
 2. Go to [vercel.com/new](https://vercel.com/new), import the GitHub repo.
 3. Under **Environment Variables**, add the same values from `.env.local`:
    `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`,
@@ -141,7 +138,7 @@ src/
     site-header.tsx, hero-section.tsx, features-section.tsx,
     cta-section.tsx, site-footer.tsx, carousel.tsx, lead-form.tsx
     schedule/                # booking modal: context, calendar, time-slots, form
-    ui/                      # Button, Checkbox primitives
+    ui/                      # Button, Checkbox, PhoneInput primitives
     icons.tsx                # inlined SVGs exported directly from the Figma file
   lib/
     validation.ts            # Zod schemas shared by client forms + API routes
@@ -167,10 +164,11 @@ not eyeballed from static mockups. A few things worth knowing:
   over 3 seconds" — I implemented it as a single bar that fills 0→100% per
   slide (not a 3-segment dashed indicator), which matches the literal wording
   and is the more common carousel pattern.
-- **Outer rounded-card layout:** the Figma canvas wraps the whole page in a
-  gray background with a white rounded card (20px top / 60px bottom radius).
-  I implemented this literally as real page chrome rather than treating it as
-  a Figma-artboard-only convention.
+- **Full-bleed layout:** the Figma artboard frames the page as a rounded card
+  on a gray canvas; the implementation instead runs the page full-bleed (with
+  the utility bar and footer stretching edge-to-edge and content sections
+  keeping their designed widths), which reads better across real viewport
+  sizes than the fixed artboard framing.
 - **Mobile nav:** the four top nav links (Features/Industries/Pricing/Resources)
   hide below the `lg` breakpoint rather than collapsing into a hamburger menu.
   Three of those four are placeholder anchors with no corresponding page/section
