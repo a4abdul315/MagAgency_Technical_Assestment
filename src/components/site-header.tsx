@@ -33,7 +33,7 @@ function scrollToLeadForm() {
 
 export function SiteHeader() {
   return (
-    <div className="flex w-full flex-col gap-4">
+    <div className="mx-auto flex w-full max-w-[1216px] flex-col gap-4">
       <div className="flex items-center justify-between">
         <div className="hidden items-center gap-[29px] sm:flex">
           <UtilityPill icon={<GlobeIcon className="size-4" />} label="EN" />

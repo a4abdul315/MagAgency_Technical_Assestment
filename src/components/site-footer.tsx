@@ -53,7 +53,7 @@ function FooterColumn({ heading, links, className }: { heading: string; links: s
 
 export function SiteFooter() {
   return (
-    <footer className="w-full rounded-[60px] bg-neutral-600 px-8 py-16">
+    <footer className="w-full rounded-t-[60px] bg-neutral-600 px-8 py-16">
       <div className="mx-auto flex w-full max-w-[864px] flex-col gap-8 lg:flex-row lg:justify-between">
         <div className="flex flex-col gap-8 sm:flex-row sm:gap-8">
           {COLUMNS.slice(0, 2).map((col) => (

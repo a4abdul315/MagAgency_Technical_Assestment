@@ -22,9 +22,7 @@ export default function Home() {
         <div className="px-4 sm:px-6 lg:px-8">
           <CtaSection />
         </div>
-        <div className="px-4 sm:px-6 lg:px-8">
-          <SiteFooter />
-        </div>
+        <SiteFooter />
       </main>
       <ScheduleModal />
     </ScheduleCallProvider>
